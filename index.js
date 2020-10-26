@@ -28,15 +28,6 @@ app.set('view engine', 'ejs');
 app.set('views', './views');
 
 
-app.use(session({
-    name: 'codeial',
-    //TODO change the secret before deployment in production mode
-    secret: 'blahsomething',
-    saveUninitialized: false,
-    
-}));
-
-
 app.listen(port, function(err)
 {
     if(err)
