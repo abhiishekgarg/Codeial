@@ -34,6 +34,7 @@ passport.use(new LocalStrategy
                 return done(null, false);
             }
 
+            console.log(`${user.name} signed in!`);
             return done(null, user);
         });
     }
