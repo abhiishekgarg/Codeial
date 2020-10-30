@@ -14,8 +14,8 @@ const sassMiddleware = require('node-sass-middleware');
 app.use(sassMiddleware
     ({
         // Options
-        src: '/assets/scss/', // where to look for scss
-        dest: '/assets/css', // where to deliver the css which is made using scss
+        src: './assets/scss/', // where to look for scss
+        dest: './assets/css', // where to deliver the css which is made using scss
         debug: true, // this will print errors if any
         outputStyle: 'extended', // similar to word-wrap thing
         prefix: '/css' // unclear concept
