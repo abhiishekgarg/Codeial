@@ -1,0 +1,25 @@
+footer 
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    bottom: 0%;
+    height: 3vw; 
+    background-color: grey;
+    width: 100%;
+    color: white;
+    a
+    {
+        color: white;
+        text-decoration: none;
+        display: block;
+    }
+    #left
+    {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 22%;
+    }
+ }
