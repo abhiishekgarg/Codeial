@@ -4,7 +4,7 @@
     <h4>Posts</h4>
     <% if(locals.user) {%>
     <form action="/posts/create" id="new-post-form" method="POST">
-        <textarea name="content" cols="40" rows="4" placeholder="What's on your mind, <%= locals.user.name%>"></textarea>
+        <textarea name="content" cols="40" rows="4" placeholder="What's on your mind, <%= locals.user.name%>" required></textarea>
         <input type="submit" value="Post">
     </form>
     <% } %>
@@ -16,15 +16,31 @@
                 <p>
                     <%= post.content %>
                     <br>
-                    <%= post.user.name %>
+                    <small>
+                        <%= post.user.name %>
+                    </small>
                     <div class="post-comments">
                         <% if(locals.user) { %>
                             <form action="/comments/create" method="POST">
-                                <input type="text" name="content" placeholder="Write a comment...">
+                                <input type="text" name="content" placeholder="Write a comment..." required>
                                 <input type="hidden" name="post" value="<%= post._id %>">
                                 <input type="submit" value="Comment">
                             </form>
                         <% } %>
+
+                        <div class="post-comments-list">
+                            <ul id="post-comments-<%= post._id %>">
+                                <% for(comment of post.comments) { %>
+                                    <p>
+                                        <%= comment.content %>
+                                        <br>
+                                        <small>
+                                            <%= comment.user.name %>
+                                        </small>
+                                    </p>
+                                <% } %>
+                            </ul>
+                        </div>
                     </div>
                 </p>
             </li>    
