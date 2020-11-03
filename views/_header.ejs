@@ -2,7 +2,7 @@
     <div id="left"><a href="/">codeial</a></div>
     <div id="right">
         <%if(locals.user) { %>
-            <a href="/users/profile"><%= user.name %></a>
+            <a href="/users/profile/<%= user.id %>"><%= user.name %></a>
             |
             <a href="/users/sign-out">Sign Out</a>
         <% } else{ %>
