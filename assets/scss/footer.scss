@@ -3,11 +3,11 @@ footer
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: absolute;
-    bottom: 0%;
-    height: 3vw; 
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%; 
     background-color: grey;
-    width: 100%;
     color: white;
     a
     {

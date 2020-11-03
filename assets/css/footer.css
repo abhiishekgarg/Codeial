@@ -2,11 +2,11 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: absolute;
-  bottom: 0%;
-  height: 3vw;
-  background-color: grey;
+  position: fixed;
+  left: 0;
+  bottom: 0;
   width: 100%;
+  background-color: grey;
   color: white; }
   footer a {
     color: white;
