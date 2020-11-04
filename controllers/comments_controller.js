@@ -39,12 +39,8 @@ module.exports.destroy = function(req, res)
         Post.findById(comment.post, function(err, post)
         {
             postCreatorId = post.user;
-            console.log(post.user);
-            console.log(postCreatorId);
-            console.log(req.user.id);
-            console.log(req.user._id);
         });
-        if(comment.user == req.user.id ||  postCreatorId === req.user.id)
+        if(comment.user == req.user.id ||  postCreatorId == req.user.id)
         {
             let postId = comment.post;
             

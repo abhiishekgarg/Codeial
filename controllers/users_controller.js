@@ -32,7 +32,7 @@ module.exports.signUp = function(req, res)
 {
     if(req.isAuthenticated())
     {
-        return res.redirect('/users/profile');
+        res.redirect('/users/profile/' + req.user.id);
     }
     return res.render('user_sign_up',
     {
@@ -46,7 +46,7 @@ module.exports.signIn = function(req, res)
 {
     if(req.isAuthenticated())
     {
-        return res.redirect('/users/profile');
+        res.redirect('/users/profile/' + req.user.id);
     }
     return res.render('user_sign_in',
     {
@@ -80,7 +80,7 @@ module.exports.create = function(req, res)
 // sign in and create a session for the user
 module.exports.createSession = function(req, res)
 {
-    return res.redirect('/users/profile');
+    res.redirect('/users/profile/' + req.user.id);
 }
 
 module.exports.destroySession = function(req, res)
