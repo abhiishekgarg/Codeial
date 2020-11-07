@@ -18,6 +18,7 @@ module.exports.update = function(req, res)
     {
         User.findByIdAndUpdate(req.params.id, req.body, function(err, user)
         {
+            req.flash('success', 'Profile updated');
             return res.redirect('back');
         });
     }
@@ -61,19 +62,32 @@ module.exports.create = function(req, res)
         return res.redirect('back');
     }
 
-    User.findOne({email: req.body.email}, function(err, user){
-        if(err){console.log('Error in finding user in signing up'); return}
-
-        if (!user){
-            User.create(req.body, function(err, user){
-                if(err){console.log('Error in creating user while signing up', err); return}
-
-                return res.redirect('/users/sign-in');
-            })
-        }else{
-            return res.redirect('back');
+    User.findOne({email: req.body.email}, function(err, user)
+    {
+        if(err)
+        {
+            console.log('Error in finding user in signing up'); 
+            return;
         }
 
+        if (!user)
+        {
+            User.create(req.body, function(err, user)
+            {
+                if(err)
+                {
+                    console.log('Error in creating user while signing up', err); 
+                    return;
+                }
+                req.flash('success', 'Sign up completed');
+                return res.redirect('/users/sign-in');
+            });
+        }
+        else
+        {
+            req.flash('error', 'Email already exists');
+            return res.redirect('back');
+        }
     });
 }
 
