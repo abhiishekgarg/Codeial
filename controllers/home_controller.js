@@ -17,6 +17,7 @@ module.exports.home =  async function(req, res)
     try
     {
         let posts = await Post.find({})
+        .sort('-createdAt')
         .populate('user')
         .populate
         ({
