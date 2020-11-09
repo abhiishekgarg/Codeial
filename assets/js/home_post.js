@@ -1,4 +1,6 @@
 {
+
+
     // method to submit the form data for new post using AJAX
     let createPost = function()
     {
@@ -16,6 +18,15 @@
                     let newPost = newPostDom(data.data.post);
                     $('#posts-list-container>ul').prepend(newPost);
                     deletePost($(' .delete-post-button', newPost));
+
+                    new Noty
+                    ({
+                        theme: 'relax',
+                        text: 'Post published',
+                        type: 'success',
+                        layout: 'topRight',
+                        timeout: 1500
+                    }).show();
                 }, 
                 error: function(error)
                 {
@@ -37,6 +48,7 @@
                         ${ post.content }
                         <br>
                         <small>
+
                         ${ post.user.name }
                         </small>
                         <div class="post-comments">
@@ -71,6 +83,14 @@
                 success: function(data)
                 {
                     $(`#post-${data.data.post_id}`).remove();
+                    new Noty
+                    ({
+                        theme: 'relax',
+                        text: 'Post Deleted',
+                        type: 'success',
+                        layout: 'topRight',
+                        timeout: 1500
+                    }).show();
                 },
                 error: function(error)
                 {
@@ -81,9 +101,25 @@
     }
 
 
+    // loop over all the existing posts on the page (when the window loads for the first time) and call the delete post method on delete link of each, also add AJAX (using the class we've created) to the delete button of each 
+    let convertPostsToAjax = function()
+    {
+        $('#posts-list-container>ul>li').each(function()
+        {
+            let self = $(this);
+            let deleteButton = $(' .delete-post-button', self);
+            deletePost(deleteButton);
+
+            // get the post's id by splitting the id attribute
+            let postId = self.prop('id').split("-")[1];
+
+        });
+    }
+
 
 
     createPost();
+    convertPostsToAjax();
 
 
 }
