@@ -12,13 +12,6 @@
         </small>
         <div class="post-comments">
             <div class="post-comments-list">
-                <h4><%= post.comments.length %>
-                    <% if(post.comments.length == 1) { %>
-                        comment
-                    <% } else { %>
-                        comments 
-                    <% } %>
-                </h4>
                 <ul id="post-comments-<%= post._id %>">
                     <% for(comment of post.comments) { %>
                         <%- include('_comment') -%>
