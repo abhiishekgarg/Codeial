@@ -35,7 +35,7 @@ module.exports.create = async function(req, res)
             }
 
             req.flash('success', 'Comment Added');
-            return res.redirect('/');
+            return res.redirect('back');
         }
     }
     catch(err)

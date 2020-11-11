@@ -41,10 +41,11 @@ module.exports.update = async function(req, res)
                 }
                 user.name = req.body.name;
                 user.email = req.body.email;
+                console.log(req.file);
                 if(req.file)
                 {
                     // this is saving the path of the uploaded file into the avatar field in the user
-                    user.avatar = user.avatarPath + '/' + req.file.filename;
+                    user.avatar = User.avatarPath + '/' + req.file.filename;
                 }
                 user.save();
                 return res.redirect('back');
