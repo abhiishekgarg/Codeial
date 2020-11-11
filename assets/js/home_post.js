@@ -25,7 +25,7 @@
                     new Noty
                     ({
                         theme: 'relax',
-                        text: 'Post published',
+                        text: 'Post publiabcshed',
                         type: 'success',
                         layout: 'topRight',
                         timeout: 1500
