@@ -29,7 +29,7 @@ let renderTemplate = function(data, relativePath)
         {
             if(err)
             {
-                console.log('Error in rendering template');
+                console.log('Error in rendering template', err);
                 return;
             }
             mailHTML = template;
