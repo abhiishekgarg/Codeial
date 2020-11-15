@@ -2,17 +2,17 @@ const nodemailer = require('../config/nodemailer');
 
 
 // this is another way of exporting a method
-exports.newComment = (comment) => 
+exports.resetPassword = (user) => 
 {
-    let htmlString = nodemailer.renderTemplate({comment: comment}, '/comments/new_comment.ejs');
-    console.log('Inside newComment Mailer');
+    let htmlString = nodemailer.renderTemplate({user: user}, '/users/password_reset.ejs');
+    console.log('Inside resetPassword Mailer');
 
     nodemailer.transporter.sendMail
     (
         {
             from: 'abhiishekgarg@gmail.com',
-            to: comment.user.email,
-            subject: "New Comment Published!",
+            to: user.email,
+            subject: "Reset Your Password",
             html: htmlString
         },
         (err, info) =>

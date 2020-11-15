@@ -28,7 +28,8 @@ const userSchema = new mongoose.Schema
     },
     accessToken:
     {
-        type: String
+        type: String,
+        default: 'abc'
     },
     isTokenValid:
     {
