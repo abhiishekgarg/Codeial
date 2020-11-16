@@ -1,6 +1,7 @@
-const Like = require('../models/like');
-const Post = require('../models/post');
+const Like = require("../models/like");
+const Post =  require("../models/post");
 const Comment = require('../models/comment');
+
 
 module.exports.toggleLike = async function(req, res)
 {
@@ -10,8 +11,8 @@ module.exports.toggleLike = async function(req, res)
         let likeable;
         let deleted = false;
 
-        // check what's the likeable
-        if(req.query.type == 'Post')
+
+        if (req.query.type == 'Post')
         {
             likeable = await Post.findById(req.query.id).populate('likes');
         }
@@ -29,7 +30,7 @@ module.exports.toggleLike = async function(req, res)
             user: req.user._id
         });
 
-        // if a like already exists
+        // if a like already exists then delete it
         if(existingLike)
         {
             likeable.likes.pull(existingLike._id);
@@ -43,18 +44,18 @@ module.exports.toggleLike = async function(req, res)
             // else make a new like
             let newLike = await Like.create
             ({
-                user: req.query._id,
+                user: req.user._id,
                 likeable: req.query.id,
                 onModel: req.query.type
             });
 
-            likeable.likes.push(newLike);
+            likeable.likes.push(newLike._id);
             likeable.save();
         }
 
         return res.json(200, {
-            message: 'Request Successful',
-            data:
+            message: "Request successful!",
+            data: 
             {
                 deleted: deleted
             }
