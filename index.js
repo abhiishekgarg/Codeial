@@ -1,4 +1,5 @@
 const express = require('express');
+const env = require('./config/environment');
 const cookieParser = require('cookie-parser');
 const app = express();
 const port = 8000;
@@ -10,6 +11,7 @@ const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
 const passportJWT = require('./config/passport-jwt-strategy');
 const passportGoogle = require('./config/passport-google-oauth2-strategy');
+const path = require('path');
 
 
 const MongoStore = require('connect-mongo')(session);
@@ -17,11 +19,12 @@ const sassMiddleware = require('node-sass-middleware');
 const flash = require('connect-flash');
 const customMware = require('./config/middleware');
 
+
 app.use(sassMiddleware
     ({
         // Options
-        src: './assets/scss/', // where to look for scss
-        dest: './assets/css', // where to deliver the css which is made using scss
+        src: path.join(__dirname, env.asset_path, 'scss'), // where to look for scss
+        dest: path.join(__dirname, env.asset_path, 'css'), // where to deliver the css which is made using scss
         debug: false, // this will print errors if any
         outputStyle: 'extended', // similar to word-wrap thing
         prefix: '/css' // unclear concept
@@ -31,7 +34,7 @@ app.use(express.urlencoded());
 
 app.use(cookieParser());
 
-app.use(express.static('./assets'));
+app.use(express.static(env.asset_path));
 // make the uploads path avaiable to the browser
 app.use('/uploads', express.static(__dirname + '/uploads'));
 
@@ -50,7 +53,7 @@ app.use(session
 ({
     name: 'codeial',
     // TODO change the secret before deployment in production mode
-    secret: 'blahsomething',
+    secret: env.session_cookie_key,
     saveUninitialized: false,
     resave: false,
     cookie: 
