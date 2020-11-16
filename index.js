@@ -1,5 +1,6 @@
 const express = require('express');
 const env = require('./config/environment');
+// const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const app = express();
 const port = 8000;
@@ -19,17 +20,20 @@ const sassMiddleware = require('node-sass-middleware');
 const flash = require('connect-flash');
 const customMware = require('./config/middleware');
 
+if(env.name == 'development')
+{
+    app.use(sassMiddleware
+        ({
+            // Options
+            src: path.join(__dirname, env.asset_path, 'scss'), // where to look for scss
+            dest: path.join(__dirname, env.asset_path, 'css'), // where to deliver the css which is made using scss
+            debug: false, // this will print errors if any
+            outputStyle: 'extended', // similar to word-wrap thing
+            prefix: '/css' // unclear concept
+        })
+    );
+}
 
-app.use(sassMiddleware
-    ({
-        // Options
-        src: path.join(__dirname, env.asset_path, 'scss'), // where to look for scss
-        dest: path.join(__dirname, env.asset_path, 'css'), // where to deliver the css which is made using scss
-        debug: false, // this will print errors if any
-        outputStyle: 'extended', // similar to word-wrap thing
-        prefix: '/css' // unclear concept
-    })
-);
 app.use(express.urlencoded());
 
 app.use(cookieParser());
@@ -37,6 +41,8 @@ app.use(cookieParser());
 app.use(express.static(env.asset_path));
 // make the uploads path avaiable to the browser
 app.use('/uploads', express.static(__dirname + '/uploads'));
+
+// app.use(logger(env.morgan.mode, env.morgan.options));
 
 app.use(expressLayouts);
 // extract style and scripts from subpages into the layout 
