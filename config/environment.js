@@ -12,6 +12,7 @@
 //     path: 'production_logs'
 // });
 
+const env_special = require('./env_special');
 
 const development =
 {
@@ -27,13 +28,13 @@ const development =
         secure: false,
         auth:
         {
-            user: 'codeial69',
-            pass: 'codeial@123'
+            user: env_special.gmail_username,
+            pass: env_special.gmail_password
         }
     },
-    google_client_id: "390712674525-ag0mvt50ocfgsq3acc02a2cvkagamepj.apps.googleusercontent.com",
-    google_client_secret: "1a9D-l4x5Qrnmg9qhqwxKH8Q",
-    google_callback_url: "http://localhost:8000/users/auth/google/callback",
+    google_client_id: env_special.client_id,
+    google_client_secret: env_special.client_secret,
+    google_callback_url: env_special.callback_url,
     jwt_secret: 'codeial',
     // morgan:
     // {
