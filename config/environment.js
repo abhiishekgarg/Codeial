@@ -14,34 +14,34 @@
 
 // const env_special = require('./env_special');
 
-const development =
-{
-    name: 'development',
-    asset_path: './public/assets',
-    session_cookie_key: 'blahsomething',
-    db: 'codeial_development',
-    smtp: 
-    {
-        service: 'gmail',
-        host: 'smtp.gmail.com',
-        port: 587,
-        secure: false,
-        auth:
-        {
-            user: env_special.gmail_username,
-            pass: env_special.gmail_password
-        }
-    },
-    google_client_id: env_special.client_id,
-    google_client_secret: env_special.client_secret,
-    google_callback_url: env_special.callback_url,
-    jwt_secret: 'codeial',
-    // morgan:
-    // {
-    //     mode: 'dev',
-    //     options: {stream: fs.accessLogStream}
-    // }
-}
+// const development =
+// {
+//     name: 'development',
+//     asset_path: './public/assets',
+//     session_cookie_key: 'blahsomething',
+//     db: 'codeial_development',
+//     smtp: 
+//     {
+//         service: 'gmail',
+//         host: 'smtp.gmail.com',
+//         port: 587,
+//         secure: false,
+//         auth:
+//         {
+//             user: env_special.gmail_username,
+//             pass: env_special.gmail_password
+//         }
+//     },
+//     google_client_id: env_special.client_id,
+//     google_client_secret: env_special.client_secret,
+//     google_callback_url: env_special.callback_url,
+//     jwt_secret: 'codeial',
+//     // morgan:
+//     // {
+//     //     mode: 'dev',
+//     //     options: {stream: fs.accessLogStream}
+//     // }
+// }
 
 const production = 
 {
