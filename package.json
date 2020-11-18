@@ -6,8 +6,7 @@
   "scripts": {
     "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prod_start": "SET NODE_ENV=production nodemon index.js",
-    "dev_start": "SET NODE_ENV=development nodemon index.js"
+    "prod_start": "NODE_ENV=production nodemon index.js"
   },
   "keywords": [
     "social"

@@ -1,6 +1,17 @@
 <link rel="stylesheet" href="<%= assetPath('css/home.css') %>">
 
 <div id="home-container">
+    <section id="user-nav">
+        <h4>User</h4>
+        <% if(locals.user) { %>
+            <% if(user.avatar) { %>
+                <img src="<%= user.avatar %>" alt="<%= user.name %>" width="100">
+            <% } %>
+            <p>
+                <a href="/users/profile/<%= user.id %>"><%= user.name %></a>
+            </p>
+        <% } %>
+    </section>
     <section id="feed-posts">
         <h4>Posts</h4>
         <% if(locals.user) {%>

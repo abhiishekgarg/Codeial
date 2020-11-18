@@ -2,9 +2,14 @@
 {
     display: flex;
 
+    #user-nav
+    {
+        width: 20%;
+        border-right: 1px solid lightgrey;
+    }
     #feed-posts
     {
-        width: 80%;
+        width: 60%;
         padding: 10px;
     }
     #user-friends
