@@ -27,3 +27,29 @@ exports.resetPassword = (user) =>
         }
     );
 }
+
+exports.signupSuccess = (user) => 
+{
+    let htmlString = nodemailer.renderTemplate({user: user}, '/users/signup_successful.ejs');
+    console.log('Inside signupSuccessful Mailer');
+
+    nodemailer.transporter.sendMail
+    (
+        {
+            from: 'abhiishekgarg@gmail.com',
+            to: user.email,
+            subject: "Welcome to Codeial!",
+            html: htmlString
+        },
+        (err, info) =>
+        {
+            if(err)
+            {
+                console.log('Error in sending mail', err);
+                return;
+            }
+            //console.log('Message sent', info);
+            return;
+        }
+    );
+}

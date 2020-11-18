@@ -127,6 +127,15 @@ module.exports.create = function(req, res)
                     console.log('Error in creating user while signing up', err); 
                     return;
                 }
+                let job = queue.create('signup-successful', user).save(function(err)
+                {
+                    if(err)
+                    {
+                        console.log('Error in sending to the queue', err);
+                        return;
+                    }
+                    console.log('Job enqueued', job.id);
+                });
                 req.flash('success', 'Sign up completed');
                 return res.redirect('/users/sign-in');
             });
