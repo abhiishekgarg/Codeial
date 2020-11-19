@@ -1,6 +1,5 @@
 #home-container {
-  display: flex;
-  margin-top: 1vw; }
+  display: flex; }
   #home-container #user-nav {
     width: 20%;
     padding: 10px;
