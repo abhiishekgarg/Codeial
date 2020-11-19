@@ -17,7 +17,7 @@
 // const development =
 // {
 //     name: 'development',
-//     asset_path: './public/assets',
+//     asset_path: './assets',
 //     session_cookie_key: 'blahsomething',
 //     db: 'codeial_development',
 //     smtp: 
@@ -72,5 +72,6 @@ const production =
     // }
 }
 
+// module.exports = development;
 module.exports = production;
 // module.exports = eval(process.env.CODEIAL_ENVIRONMENT) == undefined ? development : eval(process.env.CODEIAL_ENVIRONMENT);
