@@ -18,7 +18,13 @@ class ChatEngine
     {
         this.socket.on('connect', function()
         {
-            console.log('Connection established using Sockets!')
+            console.log('Connection established using Sockets!');
+
+            self.socket.emit('join_room',
+            {
+                user_email: userEmail,
+                chatroom: 'codeial'
+            });
         });
     }
 }
