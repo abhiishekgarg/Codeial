@@ -51,3 +51,8 @@
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.1/socket.io.js"></script>
 <script src="<%= assetPath('js/toggle_likes.js') %>"></script>
+<% if(locals.user) { %>
+<script>
+    new ChatEngine('user-chat-box', '<%= locals.user._id %>')
+</script>
+<% } %>
