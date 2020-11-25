@@ -1,6 +1,8 @@
 # Codeial (Under Development)
 Social Media Web App
 
+http://codeial.abhishekgarg.tech/
+
 ## Technologies
 Codeial uses a number of open source projects to work properly:
 * [VS Code](//code.visualstudio.com/) - awesome web-based text editor
