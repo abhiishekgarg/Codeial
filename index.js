@@ -47,6 +47,7 @@ app.use(cookieParser());
 app.use(express.static(env.asset_path));
 // make the uploads path avaiable to the browser
 app.use('/uploads', express.static(__dirname + '/uploads'));
+app.use('/.well-known/pki-validation', express.static(__dirname + '/pki-validation'));
 
 // app.use(logger(env.morgan.mode, env.morgan.options));
 
